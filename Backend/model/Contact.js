@@ -1,6 +1,6 @@
 // models/Contact.js
 import { DataTypes } from 'sequelize';
-import sequelize from "../Database/database.js"; 
+import sequelize from "../database/database.js"; 
 
 const Contact = sequelize.define('Contact', {
   id: {
