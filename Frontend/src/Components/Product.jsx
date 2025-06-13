@@ -5,7 +5,7 @@ import headphone from "../assets/headphone.jpg"
 import headphone2 from "../assets/headphone2.jpg"
 import shoe from "../assets/shoe.jpg"
 import BlackTShirt from "../assets/T-Shirt.jpg"
-import waterBottle from "../assets/waterBottle.jpg"
+import waterBottle from "../assets/waterbottle.jpg"
 import watch from "../assets/watch.jpg"
 import WhiteTShirt from "../assets/White-T-Shirt.jpg"
 import Cart from './Cart'
