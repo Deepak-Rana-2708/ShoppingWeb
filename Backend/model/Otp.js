@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from "../Database/database.js"; 
+import sequelize from "../database/database.js"; 
 
 const Otp = sequelize.define('Otp', {
     id: {
