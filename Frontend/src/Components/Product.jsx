@@ -7,7 +7,7 @@ import shoe from "../assets/shoe.jpg"
 import BlackTShirt from "../assets/T-Shirt.jpg"
 import waterBottle from "../assets/waterbottle.jpg"
 import watch from "../assets/watch.jpg"
-import WhiteTShirt from "../assets/White-T-Shirt.jpg"
+import WhiteTShirt from "../assets/White-T-shirt.jpg"
 import Cart from './Cart'
 import { useDispatch } from 'react-redux'
 import { addToCart } from './Redux/CartSlice'
