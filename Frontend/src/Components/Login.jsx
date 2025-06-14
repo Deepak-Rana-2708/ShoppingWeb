@@ -28,6 +28,7 @@ function Login() {
         // console.log(res.data.user_id);
         const user_name = res.data.user_name;
         const user_id = res.data.user_id;  // User_id Store in localStorage //
+        localStorage.setItem('token',res.data.token);
         localStorage.setItem('user_name', user_name);
         localStorage.setItem('user_id', user_id);
         if (res.data.success) {
