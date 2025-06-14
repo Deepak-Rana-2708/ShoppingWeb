@@ -22,7 +22,7 @@ import {useNavigate} from 'react-router-dom'
   export const products = [
     { id: nanoid(), name: 'Beg', Actualprice: 500, price: 250, image: Beg },
     { id: nanoid(), name: 'HeadPhone', Actualprice: 600, price: 300, image: headphone },
-    { id: nanoid(), name: 'Silver HeadPhone', Actualprice: 30, price: 350, image: headphone2 },
+    { id: nanoid(), name: 'Silver HeadPhone', Actualprice: 700, price: 350, image: headphone2 },
     { id: nanoid(), name: 'Shoes', Actualprice: 800, price: 400, image: shoe },
     { id: nanoid(), name: 'Black T-Shirt', Actualprice: 450, price: 225, image: BlackTShirt },
     { id: nanoid(), name: 'Water Bottle', Actualprice: 200, price: 100, image: waterBottle },
