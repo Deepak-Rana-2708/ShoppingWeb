@@ -1,17 +1,22 @@
 import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
 
-const JWT_SECRET = "your-secret-key-here";
+dotenv.config();
 
 const verifyToken = (req, res, next) => {
-    const token = req.cookies.token;
+    // const token = req.cookies.token;
+     const authHeader = req.headers.authorization;   
 
-    if (!token) {
+    if (!authHeader || !authHeader.startsWith("Bearer")) {
         return res.status(401).json({
             success: false,
             message: "Access Denied : No Token Provided"
         });
     }
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
+    
+    const token = authHeader.split(" ")[1];
+    
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
             return res.status(400).json({
                 success: false,
