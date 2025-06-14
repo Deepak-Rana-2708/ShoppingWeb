@@ -55,7 +55,7 @@ function Contact() {
   }, []);
 
   useEffect(() => {
-    const token = Cookie.get("token");
+    const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
   },[setIsLoggedIn])
 
