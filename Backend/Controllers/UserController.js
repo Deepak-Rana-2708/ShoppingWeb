@@ -261,7 +261,3 @@ export const Logout = (req, res) => {
     })
  }
 }
-
-export const Testing = (req,res) => {
-    res.send('hlow it working : ');
-}
