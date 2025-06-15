@@ -24,18 +24,6 @@ function Cart() {
     // const user_id = localStorage.getItem('user_id');
     // console.log(product_id);
     navigate('/app/add-to-cart-payment')
-
-    // api.post('/order/update/data', {
-    //   orderid: product_id,
-    //   userid : user_id
-    // }).then(res => {
-    //   toast.success(res.data.message)
-    // })
-    //   .catch(err => {
-    //   toast.error(err.response.data.message)
-    //   })
-    
-    // dispatch(clearCart());
   }
 
   const user_id = localStorage.getItem('user_id');
@@ -55,7 +43,7 @@ function Cart() {
  
   return (
     <>
-    <div className="fixed top-0 right-0 h-full w-80 bg-gray-400 shadow-lg border-l border-gray-300 p-4 flex flex-col z-50">
+    <div className="absolute top-0 right-0 w-64 h-screen bg-gray-400 z-50 p-4 shadow-lg">
       {/* Close button */}
       <button
         onClick={() => dispatch(closeCartDrawer())}
