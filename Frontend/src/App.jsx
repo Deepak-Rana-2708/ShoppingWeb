@@ -7,7 +7,9 @@ function App() {
   return (
     <>
       <Headers />
-      <Outlet />
+      <main className="flex flex-col min-h-screen">
+        <Outlet />
+     </main>
       <Footer />
     </>
   )
