@@ -340,7 +340,7 @@ function Header() {
           </div>
         </nav>
       </header>
-      {isVisible && <Cart />}
+      <div className="relative">{isVisible && <Cart />}</div>
     </div>
   );
 }
