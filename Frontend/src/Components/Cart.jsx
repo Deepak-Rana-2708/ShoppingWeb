@@ -43,7 +43,7 @@ function Cart() {
  
   return (
     <>
-    <div className="absolute top-0 right-0 w-64 h-screen bg-gray-400 z-50 p-4 shadow-lg">
+    <div className="absolute top-0 right-0 w-64 h-screen bg-gray-400 z-50 p-4 shadow-lg rounded-lg">
       {/* Close button */}
       <button
         onClick={() => dispatch(closeCartDrawer())}
