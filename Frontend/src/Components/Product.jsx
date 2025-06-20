@@ -53,8 +53,6 @@ function Product() {
     if (!isLoggedIn) {
       return toast.error("Please Login !");
     }
-
-    dispatch(addToCart(product));
     // toast.success(`${product.name} added to cart!`);
 
     const user_id = localStorage.getItem('user_id');
@@ -79,9 +77,12 @@ function Product() {
         quantity: foundItem.quantity,
         quantity_price: quantity_price,
       })
-        .then(res =>
-          toast.success(`${product.name} ${res.data.message}`)
-      ).catch(err => {
+        .then(res =>{
+          if(res.data.success) {
+            dispatch(addToCart(product));
+          }
+          toast.success(`${product.name} ${res.data.message}`);
+        }).catch(err => {
         // console.log(err);
           toast.error(err.response.data.message || "Failed to add item to order");
           // toast.error("Failed to add item to order");
