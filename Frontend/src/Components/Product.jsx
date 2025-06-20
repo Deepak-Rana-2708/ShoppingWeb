@@ -80,8 +80,8 @@ function Product() {
         .then(res =>{
           if(res.data.success) {
             dispatch(addToCart(product));
+            toast.success(`${product.name} ${res.data.message}`);
           }
-          toast.success(`${product.name} ${res.data.message}`);
         }).catch(err => {
         // console.log(err);
           toast.error(err.response.data.message || "Failed to add item to order");
