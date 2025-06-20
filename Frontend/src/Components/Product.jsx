@@ -55,6 +55,8 @@ function Product() {
     }
     // toast.success(`${product.name} added to cart!`);
 
+     dispatch(addToCart(product));
+    
     const user_id = localStorage.getItem('user_id');
 
     const state = store.getState();
@@ -78,10 +80,7 @@ function Product() {
         quantity_price: quantity_price,
       })
         .then(res =>{
-          if(res.data.success) {
-            dispatch(addToCart(product));
             toast.success(`${product.name} ${res.data.message}`);
-          }
         }).catch(err => {
         // console.log(err);
           toast.error(err.response.data.message || "Failed to add item to order");
