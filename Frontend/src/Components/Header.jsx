@@ -16,13 +16,13 @@ import { addAllProduct } from "./Redux/CartSlice";
 
 function Header() {
   const [input, setInput] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // for phone menu
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
-  const isVisible = useSelector((state) => state.CartDrawer.isVisible);
+  const isVisible = useSelector((state) => state.CartDrawer.isVisible); // we got the cart drawer state from redux
   const allproduct = useSelector((state) => state.cart.allProducts);
 
   const filterProduct = allproduct.filter((product) =>
@@ -52,16 +52,17 @@ function Header() {
       });
   };
 
-  const user_name = localStorage.getItem('user_name') || "";
-  const initial = user_name ? user_name.charAt(0).toUpperCase() : '';
-
+  const user_name = localStorage.getItem("user_name") || "";
+  const initial = user_name ? user_name.charAt(0).toUpperCase() : "";
 
   useEffect(() => {
     dispatch(addAllProduct(products));
   });
 
   useEffect(() => {
-    const token = Cookie.get("token");
+    // const token = Cookie.get("token");
+    const token = localStorage.getItem("token");
+    // console.log(token);
     setIsLoggedIn(!!token);
   }, []);
 
@@ -147,17 +148,19 @@ function Header() {
                         <div className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-lg">
                           {initial}
                         </div>
-                        <span className="text-gray-800 font-medium" >{ user_name}</span>
+                        <span className="text-gray-800 font-medium">
+                          {user_name}
+                        </span>
                       </div>
                     </li>
-                      <li>
-                    <button
-                      onClick={Logout}
-                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer
+                    <li>
+                      <button
+                        onClick={Logout}
+                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer
                     active:scale-105 transition duration-300 border-black"
-                    >
-                      Logout
-                    </button>
+                      >
+                        Logout
+                      </button>
                     </li>
                   </>
                 ) : (
@@ -210,7 +213,7 @@ function Header() {
                       {filterProduct.length > 0 ? (
                         <>
                           <FontAwesomeIcon
-                            icon={faTimes}
+                            icon={faTimes} // this is close icon
                             onClick={() => setInput("")}
                             className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer hover:text-red-500"
                           />
@@ -292,55 +295,55 @@ function Header() {
                   Cart
                 </span>
               </li>
-              {
-                isLoggedIn ? (
-                  <>
+              {isLoggedIn ? (
+                <>
                   <li>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-lg">
-                          {initial}
-                        </div>
-                        <span className="text-gray-800 font-medium" >{ user_name}</span>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-lg">
+                        {initial}
                       </div>
-                    </li>
-                    <li>
-                <button
-                  onClick={Logout}
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer
-                    active:scale-105 transition duration-300 border-black"
-                >
-                  Logout
-                </button>
+                      <span className="text-gray-800 font-medium">
+                        {user_name}
+                      </span>
+                    </div>
                   </li>
-                  </>
-                ): (
-                    <>
-                      <li>
-                <button
-                  onClick={()=>navigate("/login")}
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer
+                  <li>
+                    <button
+                      onClick={Logout}
+                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer
                     active:scale-105 transition duration-300 border-black"
-                >
-                  Login
-                </button>
-                      </li>
-                      <li>
-                <button
-                  onClick={()=> navigate("/signup")}
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <button
+                      onClick={() => navigate("/login")}
+                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer
                     active:scale-105 transition duration-300 border-black"
-                >
-                  Signup
-                </button>
-              </li>
-                    </> 
-                )
-              }
+                    >
+                      Login
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => navigate("/signup")}
+                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer
+                    active:scale-105 transition duration-300 border-black"
+                    >
+                      Signup
+                    </button>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </nav>
       </header>
-      {isVisible && <Cart />}
+      <div className="relative">{isVisible && <Cart />}</div>
     </div>
   );
 }

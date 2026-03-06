@@ -5,9 +5,9 @@ import headphone from "../assets/headphone.jpg"
 import headphone2 from "../assets/headphone2.jpg"
 import shoe from "../assets/shoe.jpg"
 import BlackTShirt from "../assets/T-Shirt.jpg"
-import waterBottle from "../assets/waterBottle.jpg"
+import waterBottle from "../assets/waterbottle.jpg"
 import watch from "../assets/watch.jpg"
-import WhiteTShirt from "../assets/White-T-Shirt.jpg"
+import WhiteTShirt from "../assets/White-T-shirt.jpg"
 import Cart from './Cart'
 import { useDispatch } from 'react-redux'
 import { addToCart } from './Redux/CartSlice'
@@ -79,9 +79,10 @@ function Product() {
         quantity: foundItem.quantity,
         quantity_price: quantity_price,
       })
-        .then(res =>
+        .then(res =>{
+          console.log(res.data.success);
           toast.success(`${product.name} ${res.data.message}`)
-      ).catch(err => {
+      }).catch(err => {
         // console.log(err);
           toast.error(err.response.data.message || "Failed to add item to order");
           // toast.error("Failed to add item to order");
@@ -91,7 +92,8 @@ function Product() {
   }
 
   useEffect(() => {
-    const token = Cookie.get("token");
+    // const token = Cookie.get("token");
+    const token = localStorage.getItem('token');
     setIsLoggedIn(!!token);
   },[setIsLoggedIn])
 
@@ -147,7 +149,6 @@ function Product() {
           ))
         }
       </div>
-      
       </div>
     </>
   )

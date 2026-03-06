@@ -64,7 +64,8 @@ function ProductDetail() {
     const product = useSelector(state => state.cart.allProducts.find(item => item.id === id));
 
    useEffect(() => {
-        const token = Cookiee.get('token');
+     // const token = Cookiee.get('token');
+     const token = localStorage.getItem('token');
         setIsLoggedIn(!!token);
     },[setIsLoggedIn])
 

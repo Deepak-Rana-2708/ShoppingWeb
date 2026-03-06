@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import sequelize from "../database/database.js";
 
 const User = sequelize.define('User', {
@@ -31,13 +31,9 @@ const User = sequelize.define('User', {
     address: {
         type: DataTypes.STRING,
         allowNull: false
-    }, 
-    created_at: {
-        type: DataTypes.DATE,
-        defaultValue: Sequelize.NOW
     }
 }, {
-    timestamps: false,
+    timestamps: false,   // Sequelize will not expect createdAt/updatedAt
     tableName: 'users'
 });
 

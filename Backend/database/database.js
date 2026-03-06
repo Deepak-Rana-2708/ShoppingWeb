@@ -23,6 +23,3 @@ const sequelize = new Sequelize(
 })(); 
 
 export default sequelize;
-
-// Website for webShp.infinityfreeapp.com
-// password: qo20gpKexpR
