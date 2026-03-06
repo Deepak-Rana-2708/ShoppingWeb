@@ -60,9 +60,7 @@ function Header() {
   });
 
   useEffect(() => {
-    // const token = Cookie.get("token");
     const token = localStorage.getItem("token");
-    // console.log(token);
     setIsLoggedIn(!!token);
   }, []);
 

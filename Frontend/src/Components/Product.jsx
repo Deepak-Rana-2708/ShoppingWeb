@@ -22,7 +22,7 @@ import {useNavigate} from 'react-router-dom'
   export const products = [
     { id: nanoid(), name: 'Beg', Actualprice: 500, price: 250, image: Beg },
     { id: nanoid(), name: 'HeadPhone', Actualprice: 600, price: 300, image: headphone },
-    { id: nanoid(), name: 'Silver HeadPhone', Actualprice: 30, price: 350, image: headphone2 },
+    { id: nanoid(), name: 'Silver HeadPhone', Actualprice: 700, price: 350, image: headphone2 },
     { id: nanoid(), name: 'Shoes', Actualprice: 800, price: 400, image: shoe },
     { id: nanoid(), name: 'Black T-Shirt', Actualprice: 450, price: 225, image: BlackTShirt },
     { id: nanoid(), name: 'Water Bottle', Actualprice: 200, price: 100, image: waterBottle },
@@ -53,10 +53,10 @@ function Product() {
     if (!isLoggedIn) {
       return toast.error("Please Login !");
     }
-
-    dispatch(addToCart(product));
     // toast.success(`${product.name} added to cart!`);
 
+     dispatch(addToCart(product));
+    
     const user_id = localStorage.getItem('user_id');
 
     const state = store.getState();
@@ -80,9 +80,8 @@ function Product() {
         quantity_price: quantity_price,
       })
         .then(res =>{
-          console.log(res.data.success);
-          toast.success(`${product.name} ${res.data.message}`)
-      }).catch(err => {
+            toast.success(`${product.name} ${res.data.message}`);
+        }).catch(err => {
         // console.log(err);
           toast.error(err.response.data.message || "Failed to add item to order");
           // toast.error("Failed to add item to order");
@@ -92,8 +91,7 @@ function Product() {
   }
 
   useEffect(() => {
-    // const token = Cookie.get("token");
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
   },[setIsLoggedIn])
 

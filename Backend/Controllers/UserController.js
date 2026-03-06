@@ -87,6 +87,13 @@ export const Login = async (req, res) => {
       { expiresIn: '1h' }
     );
 
+    // res.cookie('token', token, {
+    //   httpOnly: false,
+    //   secure: true,
+    //   sameSite: "None",
+    //   expires: new Date(Date.now()+3600000),
+    // })
+
       res.status(200).json({
         success: true,
         token: token,
@@ -253,8 +260,4 @@ export const Logout = (req, res) => {
       message : "Internal Server Error !"
     })
  }
-}
-
-export const Testing = (req,res) => {
-    res.send('hlow it working : ');
 }
