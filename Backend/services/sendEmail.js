@@ -35,7 +35,6 @@ Thank you!`,
     return mail;
 
   } catch (error) {
-    console.error(error);
-    throw new Error("Failed to send email");
+    throw new Error(error.message);
   }
 };
