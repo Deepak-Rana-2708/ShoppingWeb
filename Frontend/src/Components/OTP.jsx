@@ -116,7 +116,7 @@ function OTP() {
                 <label htmlFor="otp">OTP</label>
                 <div className="flex items-center gap-2">
                   <input
-                    type="otp"
+                    type="text"
                     name="otp"
                     id="otp"
                     value={otpInput.otp}

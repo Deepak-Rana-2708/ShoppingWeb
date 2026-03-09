@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 import { OrderData } from "./OrderController.js";
 import nodemailer from 'nodemailer';
+import { emailSent } from "../services/sendEmail.js";
 import { Op } from 'sequelize';
 
 dotenv.config();
@@ -139,23 +140,7 @@ export const forgotPassword = async (req, res) => {
       expires: new Date(Date.now() + 2 * 60 * 1000)  // 2 minutes expiry
     })
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
-      
-    const mail = await transporter.sendMail({
-      from: `"Shopping Web"<${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: " Your OTP Code for Password Reset",
-      text: `Hello ${user.fname},\n\n Your OTP for password reset is ${otp}. It is valid for 2 minutes.\n\nThank you!`,
-      html: `<h2>Hello ${user.fname}</h2><p>Your OTP for password reset is <strong>${otp}</strong>. It is valid for 2 minutes.</p><p>Thank you!</p>`
-    })
+    const sentEmail = await emailSent(email, otp, user.fname);
 
     res.status(200).json({
       success: true,
@@ -163,10 +148,9 @@ const transporter = nodemailer.createTransport({
     })
     
   } catch (error) {
-    console.error(error);
     res.status(500).json({
       success: false,
-      message: "Internal Server Error !"
+      message: error.message
     })
   }
 }
